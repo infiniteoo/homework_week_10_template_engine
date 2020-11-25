@@ -1,0 +1,22 @@
+{
+  "name": "homework_week_10_template_engine",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/infiniteoo/homework_week_10_template_engine.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/infiniteoo/homework_week_10_template_engine/issues"
+  },
+  "homepage": "https://github.com/infiniteoo/homework_week_10_template_engine#readme",
+  "dependencies": {
+    "inquirer": "^7.3.3"
+  }
+}
