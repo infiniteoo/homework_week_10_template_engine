@@ -1,22 +1,29 @@
 {
-  "name": "homework_week_10_template_engine",
+  "name": "unit10hw",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "OOP and testing for week 10 homework",
+  "main": "app.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --verbose test/*"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/infiniteoo/homework_week_10_template_engine.git"
+    "url": "git+https://github.com/stevetrilogy/unit10hw.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/infiniteoo/homework_week_10_template_engine/issues"
+    "url": "https://github.com/stevetrilogy/unit10hw/issues"
   },
-  "homepage": "https://github.com/infiniteoo/homework_week_10_template_engine#readme",
+  "homepage": "https://github.com/stevetrilogy/unit10hw#readme",
   "dependencies": {
-    "inquirer": "^7.3.3"
+    "inquirer": "^6.3.1"
+  },
+  "devDependencies": {
+    "jest": "^24.8.0"
   }
 }
