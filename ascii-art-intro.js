@@ -9,10 +9,10 @@ _/  |_  ____ _____    _____   \\_ |__  __ __|__|  |    __| _/___________
            \\/     \\/      \\/       \\/                    \\/    \\/      
 
 
-v1.0 by Troy Dorman
-University of Minnesota
-Full Stack Coding Bootcamp
-December 2020
+  v1.0 by Troy Dorman
+  University of Minnesota
+  Full Stack Coding Bootcamp
+  December 2020
 
 
 `
