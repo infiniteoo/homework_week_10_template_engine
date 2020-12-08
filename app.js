@@ -32,8 +32,10 @@ function clearConsole() {
 
 async function userQuestions() {
 
+    // ask universal questions
     const q = await inquirer.prompt(questions.main);
 
+    // depending on their role we'll ask an additional question then build the objects
     switch (q.position) {
 
         case "Intern":
@@ -52,9 +54,16 @@ async function userQuestions() {
 
 async function buildTeam() {
 
+    // infinite loop until we're done adding teammates
     while (finalAddition === false) {
+        
+        // ask universal questions
         let newTeamMember = await userQuestions();
+
+        // add new team member to final team object array
         finalTeam.push(newTeamMember);
+
+        // add another teammmate?
         const addAnother = await inquirer.prompt(questions.oneMore);
 
         if (addAnother.another === "No") {
@@ -76,7 +85,7 @@ async function buildTeam() {
     // write HTML file to output directory
     fs.writeFile(outputPath, finalForm, err => {
         if (err) throw error;
-        console.log("File written to: " + outputPath)
+        console.log("File written to: " + outputPath);
     });
 };
 
