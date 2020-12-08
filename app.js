@@ -36,7 +36,7 @@ async function userQuestions() {
     const qs = await inquirer
         .prompt([{
             type: "input",
-            name: "username",
+            name: "name",
             message: "Enter new teammate's name:"
         },
         {
