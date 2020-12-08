@@ -2,7 +2,6 @@ const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
-const inquirer2 = require("inquirer");
 const path = require("path");
 const fs = require("fs");
 const art = require("./ascii-art-intro");
@@ -31,27 +30,22 @@ function clearConsole() {
 
 
 async function userQuestions() {
-    const qs = await inquirer
-        .prompt(questions.main);
 
-    console.log({qs})
+    const qs = await inquirer.prompt(questions.main);
 
     switch (qs.position) {
+
         case "Intern":
             const school = await inquirer.prompt(questions.intern);
-
-            return intern = new Intern(qs.name, qs.id, qs.email, school.name);
-
+            return new Intern(qs.name, qs.id, qs.email, school.name);
 
         case "Engineer":
-
             const github = await inquirer.prompt(questions.engineer);
-            return engineer = new Engineer(qs.name, qs.id, qs.email, github.username);
+            return new Engineer(qs.name, qs.id, qs.email, github.username);
 
         case "Manager":
-
             const office = await inquirer.prompt(questions.manager);
-            return manager = new Manager(qs.name, qs.id, qs.email, office.officeNumber);
+            return new Manager(qs.name, qs.id, qs.email, office.number);
     }
 };
 
@@ -60,16 +54,7 @@ async function buildTeam() {
     while (finalAddition === false) {
         let newTeamMember = await userQuestions();
         finalTeam.push(newTeamMember);
-        const addAnother = await inquirer.prompt([
-            {
-                type: "list",
-                name: "another",
-                message: "Add another teammate?",
-                choices: ['Yes', 'No']
-            }
-
-
-        ])
+        const addAnother = await inquirer.prompt(questions.oneMore);
 
         if (addAnother.another === "No") {
             finalAddition = true;
@@ -79,14 +64,13 @@ async function buildTeam() {
 
     };
 
-    // render HTML file?
+    // render HTML file
     const finalForm = render(finalTeam);
 
     // check to see if output directory exists
-
     fs.access(OUTPUT_DIR, error => {
         if (error) {
-            // create directory
+            // if not, create directory
             fs.mkdirSync(OUTPUT_DIR);
         }
     })

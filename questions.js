@@ -37,7 +37,6 @@ const questions = {
         ],
 
     manager:
-
         [
             {
                 type: "input",
@@ -53,6 +52,17 @@ const questions = {
                 type: "input",
                 name: "username",
                 message: "Github Username:"
+            }
+        ],
+
+    oneMore:
+
+        [
+            {
+                type: "list",
+                name: "another",
+                message: "Add another teammate?",
+                choices: ['Yes', 'No']
             }
         ]
 };
