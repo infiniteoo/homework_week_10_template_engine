@@ -6,8 +6,8 @@ const inquirer2 = require("inquirer");
 const path = require("path");
 const fs = require("fs");
 const art = require("./ascii-art-intro");
-
-
+const finalTeam = [];
+let finalAddition = false;
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
@@ -32,47 +32,82 @@ function clearConsole() {
 
 // take manager's info first
 
-async function managerQs() {
-    let manager = await inquirer
+async function userQuestions() {
+    const qs = await inquirer
         .prompt([{
             type: "input",
-            name: "manName",
+            name: "username",
             message: "Enter the team manager's name:"
         },
         {
             type: "input",
-            name: "manID",
+            name: "id",
             message: "Enter the team manager's id number:"
         },
         {
             type: "input",
-            name: "manEmail",
+            name: "email",
             message: "Enter the team manager's email address:"
         },
         {
-            type: "input",
-            name: "manOffice",
-            message: "Enter the team manager's office number:"
+            type: "list",
+            name: "position",
+            message: "Who would you like to add?",
+            choices: ["Manager", "Engineer", "Intern"]
         }
         ]);
 
-    return teamManager = new Manager(manager.manName, manager.manID, manager.manEmail, manager.manOffice);
+    switch (qs.position) {
+        case "Intern":
+
+            const school = await inquirer.prompt([
+                {
+                    type: "input",
+                    name: "school",
+                    message: "School Name:"
+                }
+            ]);
+
+            return intern = new Intern(qs.name, qs.id, qs.email, school.name);
 
 
+        case "Engineer":
+
+            const github = await inquirer.prompt([
+                {
+                    type: "input",
+                    name: "username",
+                    message: "Github Username:"
+
+                }
+            ]);
+            return engineer = new Engineer(qs.name, qs.id, qs.email, github.username);
+
+        case "Manager":
+
+            const office = await inquirer.prompt([
+                {
+                    type: "input",
+                    name: "number",
+                    message: "Office Number:"
+                }
+            ]);
+            return maanger = new Manager(qs.name, qs.id, qs.email, office.number)
+
+        default:
+            console.log("Building team...");
+
+    }
 
 };
 
 async function buildTeam() {
-    const finalTeam = [];
-    let bigBoss = await managerQs();
-    finalTeam.push(bigBoss);
-    console.log({finalTeam});
 
-    
-
-
-
+    let newTeamMember = await userQuestions();
+    finalTeam.push(newTeamMember);
+    console.log({ finalTeam });
 };
 
 buildTeam();
+
 
