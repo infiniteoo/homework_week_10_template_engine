@@ -15,38 +15,39 @@ const render = require("./lib/htmlRenderer");
 
 clearConsole();
 console.log(art);
+buildTeam();
 
 
 function clearConsole() {
 
     // credit : https://gist.github.com/timneutkens/f2933558b8739bbf09104fb27c5c9664
 
-    const readline = require('readline')
-    const blank = '\n'.repeat(process.stdout.rows)
-    console.log(blank)
-    readline.cursorTo(process.stdout, 0, 0)
-    readline.clearScreenDown(process.stdout)
+    const readline = require('readline');
+    const blank = '\n'.repeat(process.stdout.rows);
+    console.log(blank);
+    readline.cursorTo(process.stdout, 0, 0);
+    readline.clearScreenDown(process.stdout);
 };
 
 
 async function userQuestions() {
 
-    const qs = await inquirer.prompt(questions.main);
+    const q = await inquirer.prompt(questions.main);
 
-    switch (qs.position) {
+    switch (q.position) {
 
         case "Intern":
             const school = await inquirer.prompt(questions.intern);
-            return new Intern(qs.name, qs.id, qs.email, school.name);
+            return new Intern(q.name, q.id, q.email, school.name);
 
         case "Engineer":
             const github = await inquirer.prompt(questions.engineer);
-            return new Engineer(qs.name, qs.id, qs.email, github.username);
+            return new Engineer(q.name, q.id, q.email, github.username);
 
         case "Manager":
             const office = await inquirer.prompt(questions.manager);
-            return new Manager(qs.name, qs.id, qs.email, office.number);
-    }
+            return new Manager(q.name, q.id, q.email, office.number);
+    };
 };
 
 async function buildTeam() {
@@ -58,10 +59,7 @@ async function buildTeam() {
 
         if (addAnother.another === "No") {
             finalAddition = true;
-
-        }
-
-
+        };
     };
 
     // render HTML file
@@ -72,19 +70,17 @@ async function buildTeam() {
         if (error) {
             // if not, create directory
             fs.mkdirSync(OUTPUT_DIR);
-        }
-    })
+        };
+    });
 
     // write HTML file to output directory
     fs.writeFile(outputPath, finalForm, err => {
         if (err) throw error;
         console.log("File written to: " + outputPath)
     });
-
-
 };
 
-buildTeam();
+
 
 
 
