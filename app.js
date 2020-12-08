@@ -37,17 +37,17 @@ async function userQuestions() {
         .prompt([{
             type: "input",
             name: "username",
-            message: "Enter the team manager's name:"
+            message: "Enter new teammate's name:"
         },
         {
             type: "input",
             name: "id",
-            message: "Enter the team manager's id number:"
+            message: "Enter new teammate's id number:"
         },
         {
             type: "input",
             name: "email",
-            message: "Enter the team manager's email address:"
+            message: "Enter new teammate's email address:"
         },
         {
             type: "list",
@@ -103,9 +103,28 @@ async function userQuestions() {
 
 async function buildTeam() {
 
-    let newTeamMember = await userQuestions();
-    finalTeam.push(newTeamMember);
-    console.log({ finalTeam });
+    while (finalAddition === false) {
+        let newTeamMember = await userQuestions();
+        finalTeam.push(newTeamMember);
+        const addAnother = await inquirer.prompt([
+            {
+                type: "list",
+                name: "another",
+                message: "Add another teammate?",
+                choices: ['Yes', 'No']
+            }
+
+
+        ])
+
+        if (addAnother.another === "No") {
+            finalAddition = true;
+
+        }
+
+
+    };
+
 };
 
 buildTeam();
