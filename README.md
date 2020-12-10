@@ -2,6 +2,8 @@
 ## Assignment #10 Template Engine: Employee Summary
 <br/>
 
+![example gif](/example/example.gif)
+
 ### Overview
 
 The focus of this assignment was to create a workplace team profile generator that lets the user input the names, roles, email addresses and ID numbers for each member of the team.  In addition, depending on their role, an additional piece of information is gathered such as an engineer's Github username, an intern's current school of attendance, and a manager's office number.  Once all team member's profiles have been entered, an HTML file is generated that contains a visual recap of the team.  Each team member is listed along with their title, ID number, role, and an additional piece of personal information on their own customized card complete with icons and CSS.
