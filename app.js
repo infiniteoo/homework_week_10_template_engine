@@ -81,7 +81,7 @@ async function buildTeam() {
 
     // write HTML file to output directory
     fs.writeFile(outputPath, render(finalTeam), err => {
-        if (err) throw error;
+        if (err) throw err;
         console.log("File written to: " + outputPath);
     });
 };
