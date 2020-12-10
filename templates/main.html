@@ -10,15 +10,48 @@
     <title>My Team</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/c502137733.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Crushed&display=swap" rel="stylesheet">
+    <style>
+        .card {
+            margin: 15px;
+            box-shadow: 5px 5px 5px grey;
+        }
+
+        .jumbotron {
+            background-color: cornflowerblue;
+            font-family: 'Crushed', cursive;
+            color: ivory;
+        }
+
+        h1 {
+            font-size: 90px;
+        }
+
+        .card-header {
+            background-color: coral;
+            color: ivory;
+        }
+
+        .title-span {
+            background-color: coral;
+            border-radius: 15px;
+        }
+
+        i {
+            color: cornflowerblue;
+        }
+    </style>
 </head>
 
 <body>
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 jumbotron mb-3 team-heading">
-                <h1 class="text-center">My Team</h1>
+                <span id="title-span">
+                    <h1 class="text-center">My Team</h1>
+                </span>
             </div>
         </div>
     </div>
