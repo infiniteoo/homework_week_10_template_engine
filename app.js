@@ -56,7 +56,7 @@ async function buildTeam() {
 
     // infinite loop until we're done adding teammates
     while (finalAddition === false) {
-        
+
         // ask universal questions
         let newTeamMember = await userQuestions();
 
@@ -71,9 +71,6 @@ async function buildTeam() {
         };
     };
 
-    // render HTML file
-    const finalForm = render(finalTeam);
-
     // check to see if output directory exists
     fs.access(OUTPUT_DIR, error => {
         if (error) {
@@ -83,7 +80,7 @@ async function buildTeam() {
     });
 
     // write HTML file to output directory
-    fs.writeFile(outputPath, finalForm, err => {
+    fs.writeFile(outputPath, render(finalTeam), err => {
         if (err) throw error;
         console.log("File written to: " + outputPath);
     });
